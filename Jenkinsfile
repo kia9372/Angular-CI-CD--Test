@@ -1,6 +1,8 @@
 
 pipeline{
-    properties([pipelineTriggers([githubPush()])])
+    triggers {
+        githubPush()
+    }
     agent any 
     stages{
         stage('Install  npm'){
