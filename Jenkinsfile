@@ -2,7 +2,7 @@
 pipeline{
     agent:any;
     stages{
-        stage('Install npm){
+        stage('Install npm'){
             steps{
                 sh "npm install"
             }
