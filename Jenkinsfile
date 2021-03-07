@@ -14,7 +14,7 @@ pipeline{
         }
         stage('Move to Var'){
             steps{
-                sh "mv /dist/ang-CICD/* /var/www/html"
+                sh "ls"
             }
         }
     }
