@@ -14,8 +14,7 @@ pipeline{
         }
         stage('Move to Var'){
             steps{
-                sh "cd dist"
-                sh "ls"
+                sh "cd dist ls"
             }
         }
     }
