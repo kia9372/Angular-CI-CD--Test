@@ -1,5 +1,6 @@
 
 pipeline{
+    properties([pipelineTriggers([githubPush()])])
     agent any 
     stages{
         stage('Install  npm'){
@@ -8,14 +9,14 @@ pipeline{
             }
             post{
                 always{
-                    echo "Success Move to Var"
+                    echo "Success npm install"
                 }
                 failure{
-                    echo "fail operation Move to Var"
-                    mail body: 'Error in Move to Var ', subject: 'Build failed!', to: 'kiadr9372@gmail.com'
+                    echo "fail operation npm installr"
+                    mail body: 'Error in npm install ', subject: 'Build failed!', to: 'kiadr9372@gmail.com'
                 }
                 success{
-                 echo "Success Move to Var"
+                 echo "Success npm install"
                 }
             }
         }
@@ -25,14 +26,14 @@ pipeline{
             }
             post{
                 always{
-                    echo "Success Move to Var"
+                    echo "Success Build Project"
                 }
                 failure{
-                    echo "fail operation Move to Var"
-                    mail body: 'Error in Move to Var ', subject: 'Build failed!', to: 'kiadr9372@gmail.com'
+                    echo "fail operation Build Project"
+                    mail body: 'Error in Build Project ', subject: 'Build failed!', to: 'kiadr9372@gmail.com'
                 }
                 success{
-                 echo "Success Move to Var"
+                 echo "Success Build Project"
                 }
             }
         }
