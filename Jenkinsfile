@@ -2,7 +2,7 @@
 pipeline{
     agent any 
     stages{
-        stage('Install npm){
+        stage('Install npm'){
             steps{
                 sh "npm install"
             }
@@ -14,7 +14,7 @@ pipeline{
         }
         stage('Move to Var'){
             steps{
-                sh "mv dist/ang-cicd/* /var/www/html"
+                sh "mv /dist/ang-CICD/* /var/www/html"
             }
         }
     }
