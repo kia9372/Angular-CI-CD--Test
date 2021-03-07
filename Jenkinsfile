@@ -1,7 +1,7 @@
 
 pipeline{
     agent any 
-    triggers { pollSCM('/2 * * * *') }
+    triggers { pollSCM('/1 * * * *') }
     stages{
         stage('Install npm'){
             steps{
