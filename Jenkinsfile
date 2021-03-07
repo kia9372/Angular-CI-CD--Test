@@ -14,7 +14,7 @@ pipeline{
         }
         stage('Move to Var'){
             steps{
-                sh "chown -R root:jenkins cp /var/lib/jenkins/workspace/Angular-CI-CD--Test_master/dist/ang-CICD/. && /var/www/html"
+                sh "chown -R root:jenkins /var/lib/jenkins/workspace/Angular-CI-CD--Test_master/dist/ang-CICD/. && /var/www/html"
             }
         }
     }
