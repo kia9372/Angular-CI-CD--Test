@@ -31,9 +31,19 @@ pipeline {
                 when {
                     branch 'develop'
                 }
-                steps {
-                    sh 'ng build --prod '
+                parallel {
+                    stage('build') {
+                        steps {
+                            sh 'ng build --prod '
+                        }
+                    }
+                     stage('build B') {
+                        steps {
+                            echo "hi"
+                        }
+                    }
                 }
+
                 post {
                     always {
                         echo 'Success Build Project'
