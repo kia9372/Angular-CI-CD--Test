@@ -9,7 +9,9 @@ pipeline {
              when {
                 branch 'master'
             }
+            step{
             checkout scm
+            }
         }
         stage('Install  npm') {
             steps {
