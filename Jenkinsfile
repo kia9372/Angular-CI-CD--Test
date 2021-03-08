@@ -5,8 +5,15 @@ pipeline {
     }
     agent any
     stages {
-        stage('check out scm') {
-            checkout scm
+        parallel 'develop' {
+            stage('check out scm') {
+                checkout scm
+            }
+        }
+        parallel 'master' {
+            stage('check out scm') {
+                checkout scm
+            }
         }
         stage('Install  npm') {
             steps {
