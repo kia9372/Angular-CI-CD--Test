@@ -5,7 +5,6 @@ pipeline {
     }
     agent any
     stages {
-        parallel {
             stage('check out source manager') {
                 steps {
                     checkout scm
@@ -85,6 +84,6 @@ pipeline {
                     }
                 }
             }
-        }
+        
     }
 }
