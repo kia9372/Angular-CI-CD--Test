@@ -5,12 +5,12 @@ pipeline {
     }
     agent any
     stages {
-        stage('check out scm') {
-             when {
+        stage('check out source manager') {
+            when {
                 branch 'master'
             }
-            step{
-            checkout scm
+            steps {
+                checkout scm
             }
         }
         stage('Install  npm') {
