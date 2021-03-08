@@ -6,9 +6,6 @@ pipeline {
     agent any
     stages {
         stage('check out scm') {
-            when {
-                branch 'master'
-            }
             checkout scm
         }
         stage('Install  npm') {
