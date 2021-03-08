@@ -7,9 +7,6 @@ pipeline {
     stages {
         parallel {
             stage('check out source manager') {
-                when {
-                    branch 'master'
-                }
                 steps {
                     checkout scm
                 }
