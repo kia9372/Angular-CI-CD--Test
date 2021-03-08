@@ -6,8 +6,6 @@ pipeline {
     agent any
     stages {
             stage('check out source manager') {
-            parallel {
-                stage ('check out SCM')
                 steps {
                     checkout scm
                 }
@@ -85,7 +83,6 @@ pipeline {
                         echo 'Success Move to Var'
                     }
                 }
-            }
             }
     }
 }
