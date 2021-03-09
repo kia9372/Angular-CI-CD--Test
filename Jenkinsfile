@@ -37,11 +37,11 @@ pipeline {
                             sh 'ng build --prod '
                         }
                     }
-                     stage('build B') {
+                stage('build B') {
                         steps {
-                            echo "hi"
+                            echo 'hi'
                         }
-                    }
+                }
                 }
 
                 post {
@@ -77,9 +77,9 @@ pipeline {
                     }
                 }
             }
-            stage('Move to Var') {
+            stage('Uplod to server') {
                 steps {
-                    sh 'chown -R root:jenkins /var/lib/jenkins/workspace/Angular-CI-CD--Test_master/dist/ang-CICD/. && /var/www/html'
+                    sh 'git ftp init --user lsendes1 --passwd K720228d ftp://193.141.64.96/public_html'
                 }
                 post {
                     always {
