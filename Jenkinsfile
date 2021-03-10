@@ -96,11 +96,21 @@ pipeline {
 
                 post {
                     always {
-                        echo 'Success Move to Var'
+                        echo 'Start Upload to Server'
                     }
                     failure {
                         echo 'fail operation Move to Var'
-                        mail body: 'Error in Move to Var ', subject: 'Build failed!', to: 'kiadr9372@gmail.com'
+                        // mail body: "${env.BUILD_URL} has result ${currentBuild.result}", subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'kiadr9372@gmail.com'
+                        emailext attachLog: true, body:
+                        """<p>EXECUTED: Job <b>\'${env.JOB_NAME}:${env.BUILD_NUMBER})\'
+                        </b></p><p>View console output at "<a href="${env.BUILD_URL}">
+                        ${env.JOB_NAME}:${env.BUILD_NUMBER}</a>"</p><p><i>(Build log is attached.)</i></p>""",
+                        compressLog: true,
+                        recipientProviders: [[$class: 'DevelopersRecipientProvider'],
+                        [$class: 'RequesterRecipientProvider']],
+                        replyTo: 'do-not-reply@company.com',
+                        subject: "Status: ${currentBuild.result?:'SUCCESS'} - Job \'${env.JOB_NAME}:${env.BUILD_NUMBER}\'",
+                        to: 'kiadr9372@gmail.com'
                     }
                     success {
                         echo 'Success Move to Var'
