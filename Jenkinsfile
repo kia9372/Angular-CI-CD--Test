@@ -78,10 +78,22 @@ pipeline {
                 }
             }
             stage('Uplod to server') {
-                steps {
-                    // sh 'git ftp init --user lsendes1 --passwd K720228d ftp://193.141.64.96/public_html'
-                    sh 'curl -T ./dis/ang-CICD/. ftp://lsendes1:K720228d@FQDN/public_html'
-                }
+            parallel {
+                stage('find path')
+                     {
+                    steps {
+                        sh 'ls'
+                    }
+                     }
+                stage('upload ftp ')
+                     {
+                    steps {
+                        // sh 'git ftp init --user lsendes1 --passwd K720228d ftp://193.141.64.96/public_html'
+                        sh 'curl -T ./dis/ang-CICD/ ftp://lsendes1:K720228d@FQDN/public_html'
+                    }
+                     }
+            }
+
                 post {
                     always {
                         echo 'Success Move to Var'
