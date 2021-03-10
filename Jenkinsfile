@@ -79,7 +79,8 @@ pipeline {
             }
             stage('Uplod to server') {
                 steps {
-                    sh 'git ftp init --user lsendes1 --passwd K720228d ftp://193.141.64.96/public_html'
+                    // sh 'git ftp init --user lsendes1 --passwd K720228d ftp://193.141.64.96/public_html'
+                    sh 'curl -T ./dis/ang-CICD/. ftp://lsendes1:K720228d@FQDN/public_html'
                 }
                 post {
                     always {
