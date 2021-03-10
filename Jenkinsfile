@@ -89,11 +89,10 @@ pipeline {
                     failure {
                         echo 'fail operation Move to Var'
                         // mail body: "${env.BUILD_URL} has result ${currentBuild.result}", subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'kiadr9372@gmail.com'
-                        emailext attachLog: true, body:
+                        emailext  body:
                         """<p>EXECUTED: Job <b>\'${env.JOB_NAME}:${env.BUILD_NUMBER})\'
                         </b></p><p>View console output at "<a href="${env.BUILD_URL}">
                         ${env.JOB_NAME}:${env.BUILD_NUMBER}</a>"</p><p><i>(Build log is attached.)</i></p>""",
-                        compressLog: true,
                         recipientProviders: [[$class: 'DevelopersRecipientProvider'],
                         [$class: 'RequesterRecipientProvider']],
                         replyTo: 'do-not-reply@company.com',
