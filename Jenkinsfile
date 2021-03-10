@@ -79,7 +79,7 @@ pipeline {
             }
             stage('Uplod to server') {
             parallel {
-                stage('find path')
+                stage('find with ls path')
                      {
                     steps {
                         sh 'ls'
